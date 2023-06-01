@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using Logics.UserLogic;
 using Microsoft.AspNetCore.Mvc;
 using MotelDotNetCore.Models;
 using Repositories.Repositories.UserRepository;
@@ -8,15 +9,15 @@ namespace MotelDotNetCore.Controllers;
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
-    private readonly IUserRepository _userRepository;
+    private readonly IUserLogic _userLogic;
 
     public HomeController(
         ILogger<HomeController> logger,
-        IUserRepository userRepository
+        IUserLogic userLogic
     )
     {
         _logger = logger;
-        _userRepository = userRepository;
+        _userLogic = userLogic;
     }
 
     public IActionResult Index()
@@ -35,7 +36,7 @@ public class HomeController : Controller
     {
         return Ok(new
         {
-            Info = await _userRepository.UserInfo(username)
+            Info = await _userLogic.UserInfo(username)
         });
     }
 

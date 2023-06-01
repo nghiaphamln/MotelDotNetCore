@@ -8,7 +8,7 @@ public class AutofacModule : Module
 {
     protected override void Load(ContainerBuilder builder)
     {
-        builder.RegisterType<UserLogic>().As<IUserLogic>().SingleInstance();
-        builder.RegisterType<UserRepository>().As<IUserRepository>().SingleInstance();
+        builder.RegisterType<UserLogic>().As<IUserLogic>();
+        builder.RegisterType<UserRepository>().As<IUserRepository>();
     }
 }
