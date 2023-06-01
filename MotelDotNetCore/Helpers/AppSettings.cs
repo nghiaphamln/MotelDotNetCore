@@ -24,8 +24,6 @@ public class AppSettings
         var builder = new ConfigurationBuilder()
             .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
             .AddEnvironmentVariables();
-        
-        Console.WriteLine(builder);
 
         var configuration = builder.Build();
 
