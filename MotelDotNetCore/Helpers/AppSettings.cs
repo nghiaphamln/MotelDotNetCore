@@ -1,4 +1,6 @@
-﻿namespace MotelDotNetCore;
+﻿using Microsoft.Extensions.Configuration;
+
+namespace Helpers;
 
 public class AppSettings
 {
@@ -12,7 +14,7 @@ public class AppSettings
         return _appSettings.AppSettingValue;
     }
 
-    public AppSettings(IConfiguration config, string key)
+    private AppSettings(IConfiguration config, string key)
     {
         AppSettingValue = config.GetValue<string>(key);
     }
@@ -20,9 +22,10 @@ public class AppSettings
     private static AppSettings GetCurrentSettings(string key)
     {
         var builder = new ConfigurationBuilder()
-            .SetBasePath(Directory.GetCurrentDirectory())
             .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
             .AddEnvironmentVariables();
+        
+        Console.WriteLine(builder);
 
         var configuration = builder.Build();
 

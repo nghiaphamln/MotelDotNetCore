@@ -16,8 +16,8 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Helpers\Helpers.csproj" />
       <ProjectReference Include="..\Models\Models.csproj" />
-      <ProjectReference Include="..\MotelDotNetCore\MotelDotNetCore.csproj" />
     </ItemGroup>
 
 </Project>

@@ -1,6 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Helpers;
+using Microsoft.EntityFrameworkCore;
 using Models.Entities;
-using MotelDotNetCore;
 
 namespace Repositories.Data;
 
@@ -10,8 +10,14 @@ public class ApplicationDbContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        var connectionString = AppSettings.Get("AppSettings:Postgresql");
-        optionsBuilder.UseNpgsql(connectionString);
+        if (optionsBuilder.IsConfigured) return;
+        
+        var connectionString = AppSettings.Get("ConnectionStrings:PostgresqlDb");
+        
+        optionsBuilder.UseNpgsql(connectionString, builder =>
+        {
+            builder.MigrationsAssembly("MotelDotNetCore");
+        });
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
