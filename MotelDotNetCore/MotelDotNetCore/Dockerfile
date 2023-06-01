@@ -5,7 +5,7 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
-COPY ["MotelDotNetCore/MotelDotNetCore.csproj", "MotelDotNetCore/"]
+COPY ["MotelDotNetCore.csproj", "MotelDotNetCore/"]
 RUN dotnet restore "MotelDotNetCore/MotelDotNetCore.csproj"
 COPY . .
 WORKDIR "/src/MotelDotNetCore"
