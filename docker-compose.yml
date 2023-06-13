@@ -10,7 +10,7 @@ services:
     volumes:
       - ./contoso.com.crt:/https/server.crt:ro
       - ./contoso.com.key:/https/server.key:ro
-      - ./contoso.com.pfx:/https/server.pfx:ro
+      - ./contoso.com.pfx:/https/server.pfx
       - keys:/app/keys
     environment:
       - ASPNETCORE_URLS=https://+;http://+
