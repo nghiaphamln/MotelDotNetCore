@@ -11,7 +11,7 @@ services:
       - ./contoso.com.crt:/https/server.crt:ro
       - ./contoso.com.key:/https/server.key:ro
       - ./contoso.com.pfx:/https/server.pfx
-      - keys:/app/keys
+      - keys:/root/.aspnet/DataProtection-Keys
     environment:
       - ASPNETCORE_URLS=https://+;http://+
       - ASPNETCORE_HTTPS_PORT=443

@@ -3,6 +3,12 @@ WORKDIR /app
 EXPOSE 80
 EXPOSE 443
 
+# Create a directory for storing the keys
+RUN mkdir -p /root/.aspnet/DataProtection-Keys
+
+# Set the volume mount point for the keys directory
+VOLUME /root/.aspnet/DataProtection-Keys
+
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR "/"
 COPY ["MotelDotNetCore/MotelDotNetCore.csproj", "MotelDotNetCore/"]
