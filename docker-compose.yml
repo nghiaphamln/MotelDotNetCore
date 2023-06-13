@@ -4,9 +4,9 @@ services:
     build: ./MotelDotNetCore
     container_name: motel-dotnet
     restart: unless-stopped
-    ports:
-      - 80
-      - 443
+    rts:
+      - '80:80'
+      - '443:443'
     volumes:
       - ./server.crt:/https/server.crt
       - ./server.key:/https/server.key
