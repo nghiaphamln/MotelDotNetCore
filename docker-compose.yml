@@ -7,7 +7,11 @@ services:
     ports:
       - 80
       - 443
-    environment:
-      - ASPNETCORE_URLS=https://+:443;http://+:80
     volumes:
-      - ~/.aspnet/https:/https:ro
+      - ./server.crt:/https/server.crt
+      - ./server.key:/https/server.key
+    environment:
+      - ASPNETCORE_URLS=https://+;http://+
+      - ASPNETCORE_HTTPS_PORT=443
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/server.pfx
