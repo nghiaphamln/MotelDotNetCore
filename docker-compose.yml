@@ -14,4 +14,4 @@ services:
       - ASPNETCORE_URLS=https://+;http://+
       - ASPNETCORE_HTTPS_PORT=443
       - ASPNETCORE_Kestrel__Certificates__Default__Password=
-      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/server.pfx
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/server.crt
