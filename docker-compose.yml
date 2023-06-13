@@ -8,10 +8,11 @@ services:
       - '80:80'
       - '443:443'
     volumes:
-      - ./server.crt:/https/server.crt
-      - ./server.key:/https/server.key
+      - ./contoso.com.crt:/https/contoso.com.crt
+      - ./contoso.com.key:/https/contoso.com.key
+      - ./contoso.com.pfx:/https/contoso.com.pfx
     environment:
       - ASPNETCORE_URLS=https://+;http://+
       - ASPNETCORE_HTTPS_PORT=443
       - ASPNETCORE_Kestrel__Certificates__Default__Password=
-      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/server.crt
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/contoso.com.pfx
