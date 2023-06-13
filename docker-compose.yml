@@ -17,9 +17,8 @@ services:
       - ASPNETCORE_HTTPS_PORT=443
       - ASPNETCORE_Kestrel__Certificates__Default__Password=
       - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/server.pfx
-      - ConnectionStrings__PostgresqlDb=${POSTGRES_CONNECTION_STRING}
     env_file:
-      - .env
+      - env.yml
 
 volumes:
   keys:
