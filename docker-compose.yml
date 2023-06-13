@@ -1,0 +1,6 @@
+version: '3'
+services:
+  motel-dotnet:
+    build: /MotelDotNetCore
+    container_name: motel-dotnet
+    restart: unless-stopped
