@@ -17,4 +17,7 @@ RUN dotnet publish "MotelDotNetCore.csproj" -c Release -o /app/publish /p:UseApp
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "MotelDotNetCore.dll"]
+
+#ENTRYPOINT ["dotnet", "MotelDotNetCore.dll"]
+ENTRYPOINT ["sh", "-c", "openssl pkcs12 -export -in /https/server.crt -inkey /https/server.key -out /https/server.pfx -password pass:; dotnet MotelDotNetCore.dll"]
+
