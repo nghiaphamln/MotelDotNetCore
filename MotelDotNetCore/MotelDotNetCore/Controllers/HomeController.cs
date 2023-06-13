@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using Helpers;
 using Logics.UserLogic;
 using Microsoft.AspNetCore.Mvc;
 using MotelDotNetCore.Models;
@@ -37,6 +38,15 @@ public class HomeController : Controller
         return Ok(new
         {
             Info = await _userLogic.UserInfo(username)
+        });
+    }
+
+    [HttpGet("get-env")]
+    public IActionResult GetEnv(string env)
+    {
+        return Ok(new
+        {
+            Data = AppSettings.Get(env)
         });
     }
 
